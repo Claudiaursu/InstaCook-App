@@ -15,8 +15,14 @@ namespace proiectDAW.Data
     public class ProjectContext : DbContext
 
     {
-        /*
+        
         public DbSet<DataBaseModel> DataBaseModels { get; set; }
+
+        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
+        {
+
+        }
+        /*
 
         public DbSet<Student> Students { get; set; }
 
@@ -38,10 +44,7 @@ namespace proiectDAW.Data
 
         public DbSet<ModelsRelation> modelsRelations { get; set; }
 
-        public Lab3Context(DbContextOptions<Lab3Context> options) : base(options)
-        {
-
-        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -77,6 +80,6 @@ namespace proiectDAW.Data
 
             base.OnModelCreating(modelBuilder);
         */
-        
+
     }
 }
