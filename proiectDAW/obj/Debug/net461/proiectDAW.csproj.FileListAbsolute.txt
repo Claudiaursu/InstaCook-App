@@ -324,3 +324,6 @@ D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Swash
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\System.Text.Json.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.Bcl.HashCode.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.EntityFrameworkCore.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.EntityFrameworkCore.Abstractions.dll
