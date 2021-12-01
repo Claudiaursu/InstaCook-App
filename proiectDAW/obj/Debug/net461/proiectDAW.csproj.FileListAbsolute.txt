@@ -348,3 +348,8 @@ D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\pt-BR
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\ru\Microsoft.Data.SqlClient.resources.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.NodeServices.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.SpaServices.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.SpaServices.Extensions.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.WebSockets.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\System.Net.WebSockets.WebSocketProtocol.dll
