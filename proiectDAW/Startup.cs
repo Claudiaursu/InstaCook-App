@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using proiectDAW.Data;
 using proiectDAW.Repositories.DatabaseRepository;
+using proiectDAW.Services;
 
 namespace proiectDAW
 {
@@ -45,6 +46,9 @@ namespace proiectDAW
             // inregistram toate repository-urile si toate serviciile (pt dependency injection)
             // transient: la fiecare injectare o instanta noua!
             services.AddTransient<IUtilizatorRepository, UtilizatorRepository>();
+            services.AddTransient<IUtilizatorService, UtilizatorService>();
+            services.AddTransient<IDatePersonaleRepository, DatePersonaleRepository>();
+            services.AddTransient<IDatePersonaleService, DatePersonaleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

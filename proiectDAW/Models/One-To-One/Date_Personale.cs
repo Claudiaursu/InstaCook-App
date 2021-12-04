@@ -14,5 +14,6 @@ namespace proiectDAW.Models.One_To_One
         public string Telefon { get; set; }
 
         public Utilizator Utilizator { get; set; }
+
     }
 }

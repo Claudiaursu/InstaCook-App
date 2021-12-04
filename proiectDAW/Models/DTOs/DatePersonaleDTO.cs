@@ -5,12 +5,9 @@ using System.Threading.Tasks;
 
 namespace proiectDAW.Models.DTOs
 {
-    public class UtilizatorDTO
+    public class DatePersonaleDTO
     {
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
-        public int NrPuncte { get; set; }
-        public string Email {get; set; }
+        public string Email { get; set; }
         public string Tara_Origine { get; set; }
         public string Telefon { get; set; }
     }

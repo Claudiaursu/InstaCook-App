@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using proiectDAW.Models;
 using proiectDAW.Services;
 using System;
 using System.Collections.Generic;
@@ -25,5 +26,18 @@ namespace proiectDAW.Controllers
             var result = _utilizatorService.getUtilizatorByName(nume, prenume);
             return Ok(result);
         }
+
+        [HttpGet("detaliiUtilizator")]
+        public IActionResult getByFullNameWithData(string nume, string prenume)
+        {
+            var result = _utilizatorService.getUtilizatorByNameWithDate(nume, prenume);
+            return Ok(result);
+        }
+
+        //[HttpPost("fromBody")]
+        //public IActionResult AddWithFromBody([FromBody] Utilizator utiliz)
+        //{
+        //    var result =  _utilizatorService.createUtilizator(utiliz);
+        //}
     }
 }

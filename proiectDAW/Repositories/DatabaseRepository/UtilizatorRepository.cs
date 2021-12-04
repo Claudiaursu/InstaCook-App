@@ -33,5 +33,11 @@ namespace proiectDAW.Repositories.DatabaseRepository
             return _table.Include(x => x.Colectii).FirstOrDefault(x => x.Nume_Utilizator.ToLower().Equals(nume.ToLower()) &&
             x.Prenume_Utilizator.ToLower().Equals(prenume.ToLower()));
         }
+
+        public Utilizator GetByFullNameIncludingDatePersonale(string nume, string prenume)
+        {
+            return _table.Include(x => x.Date_Personale).FirstOrDefault(x => x.Nume_Utilizator.ToLower().Equals(nume.ToLower()) &&
+            x.Prenume_Utilizator.ToLower().Equals(prenume.ToLower()));
+        }
     }
 }
