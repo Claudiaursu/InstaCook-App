@@ -34,10 +34,11 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
-        //[HttpPost("fromBody")]
-        //public IActionResult AddWithFromBody([FromBody] Utilizator utiliz)
-        //{
-        //    var result =  _utilizatorService.createUtilizator(utiliz);
-        //}
+        [HttpPost]
+        public IActionResult AddWithFromBody(Utilizator utiliz)
+        {
+            var result = _utilizatorService.createUtilizator(utiliz);
+            return Ok(result);
+        }
     }
 }

@@ -12,6 +12,6 @@ namespace proiectDAW.Services
         UtilizatorDTO getUtilizatorByName(string nume, string prenume);
         UtilizatorDTO getUtilizatorByNameWithDate(string nume, string prenume);
 
-        //UtilizatorDTO createUtilizator(Utilizator utiliz);
+        UtilizatorDTO createUtilizator(Utilizator utiliz);
     }
 }

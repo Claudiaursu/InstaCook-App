@@ -24,6 +24,7 @@ namespace proiectDAW.Repositories.DatabaseRepository
                 Telefon = telefon
             };
             this.Create(dateNoi);
+            this.Save();
             return dateNoi;
         }
     }

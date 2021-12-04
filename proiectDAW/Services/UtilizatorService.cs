@@ -1,5 +1,6 @@
 ﻿using proiectDAW.Models;
 using proiectDAW.Models.DTOs;
+using proiectDAW.Models.One_To_One;
 using proiectDAW.Repositories.DatabaseRepository;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace proiectDAW.Services
     public class UtilizatorService : IUtilizatorService
     {
         public IUtilizatorRepository _utilizatorRepository;
+        public IDatePersonaleRepository _datePersonaleRepository;
 
-        public UtilizatorService(IUtilizatorRepository utilizatorRepository)
+        public UtilizatorService(IUtilizatorRepository utilizatorRepository, IDatePersonaleRepository datePersonaleRepository)
         {
             _utilizatorRepository = utilizatorRepository;
+            _datePersonaleRepository = datePersonaleRepository;
         }
 
 
@@ -47,10 +50,26 @@ namespace proiectDAW.Services
             return utilizDTO;
         }
 
-        //public UtilizatorDTO createUtilizator(Utilizator utiliz)
-        //{
-        //    _utilizatorRepository.Create(utiliz);
-        //}
+        public UtilizatorDTO createUtilizator(Utilizator utiliz)
+        {
+            Date_Personale datePers = _datePersonaleRepository.CreateDatePersonale(utiliz.Date_Personale.Email, utiliz.Date_Personale.Tara_Origine, utiliz.Date_Personale.Telefon);
+            _utilizatorRepository.Save();
+
+            utiliz.Date_PersonaleId = datePers.Id;
+
+            _utilizatorRepository.Create(utiliz);
+            _utilizatorRepository.Save();
+            UtilizatorDTO utilizDTO = new UtilizatorDTO()
+            {
+                Nume = utiliz.Nume_Utilizator,
+                Prenume = utiliz.Prenume_Utilizator,
+                NrPuncte = utiliz.Total_Puncte,
+                Email = utiliz.Date_Personale.Email,
+                Tara_Origine = utiliz.Date_Personale.Tara_Origine,
+                Telefon = utiliz.Date_Personale.Telefon
+            };
+            return utilizDTO;
+        }
 
     }
 }
