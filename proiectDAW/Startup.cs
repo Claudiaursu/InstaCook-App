@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using proiectDAW.Data;
+using proiectDAW.Repositories.DatabaseRepository;
 
 namespace proiectDAW
 {
@@ -39,7 +40,11 @@ namespace proiectDAW
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); 
+            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            // inregistram toate repository-urile si toate serviciile (pt dependency injection)
+            // transient: la fiecare injectare o instanta noua!
+            services.AddTransient<IUtilizatorRepository, UtilizatorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

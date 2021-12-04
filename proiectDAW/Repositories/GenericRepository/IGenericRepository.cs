@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace proiectDAW.Repositories.GenericRepository
 {
-    interface IGenericRepository<TEntity> where TEntity : BaseEntity
+    public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         //Get all
         Task<List<TEntity>> GetAll();
