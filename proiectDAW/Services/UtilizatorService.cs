@@ -71,5 +71,25 @@ namespace proiectDAW.Services
             return utilizDTO;
         }
 
+        public List<UtilizatorDTO> getAll()
+        {
+            List<UtilizatorDTO> usersDTO = new List<UtilizatorDTO>(); 
+            List<Utilizator> allUsers = _utilizatorRepository.GetAllWithInclude();
+            allUsers.ForEach(utilizator =>
+            {
+                UtilizatorDTO userDTO = new UtilizatorDTO()
+                {
+                    Nume = utilizator.Nume_Utilizator,
+                    Prenume = utilizator.Prenume_Utilizator,
+                    NrPuncte = utilizator.Total_Puncte,
+                    Email = utilizator.Date_Personale.Email,
+                    Tara_Origine = utilizator.Date_Personale.Tara_Origine,
+                    Telefon = utilizator.Date_Personale.Telefon
+                };
+                usersDTO.Add(userDTO);
+            });
+            return usersDTO;
+        }
+
     }
 }

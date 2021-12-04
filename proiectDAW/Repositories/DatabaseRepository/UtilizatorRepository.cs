@@ -18,7 +18,7 @@ namespace proiectDAW.Repositories.DatabaseRepository
         
         public List<Utilizator> GetAllWithInclude()
         {
-            return _table.Include(x => x.Colectii).ToList();
+            return _table.Include(x => x.Date_Personale).ToList();
         }
 
         public Utilizator GetByFullName(string nume, string prenume)

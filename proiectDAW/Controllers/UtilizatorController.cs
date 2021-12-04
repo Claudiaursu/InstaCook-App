@@ -34,6 +34,13 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getAll")]
+        public IActionResult getAllWithInclude()
+        {
+            var usersList = _utilizatorService.getAll();
+            return Ok(usersList);
+        }
+
         [HttpPost]
         public IActionResult AddWithFromBody(Utilizator utiliz)
         {
