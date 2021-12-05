@@ -12,7 +12,7 @@ namespace proiectDAW.Repositories.DatabaseRepository
         Utilizator GetByFullName(string nume, string prenume);
         Utilizator GetByFullNameIncludingColectii(string nume, string prenume);
         List<Utilizator> GetAllWithInclude();
-
         Utilizator GetByFullNameIncludingDatePersonale(string nume, string prenume);
+
     }
 }

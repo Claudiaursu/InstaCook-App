@@ -46,8 +46,11 @@ namespace proiectDAW
             // inregistram toate repository-urile si toate serviciile (pt dependency injection)
             // transient: la fiecare injectare o instanta noua!
             services.AddTransient<IUtilizatorRepository, UtilizatorRepository>();
-            services.AddTransient<IUtilizatorService, UtilizatorService>();
             services.AddTransient<IDatePersonaleRepository, DatePersonaleRepository>();
+            services.AddTransient<IColectieRepository, ColectieRepository>();
+
+            services.AddTransient<IColectieService, ColectieService>();
+            services.AddTransient<IUtilizatorService, UtilizatorService>();
             services.AddTransient<IDatePersonaleService, DatePersonaleService>();
         }
 
