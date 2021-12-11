@@ -42,7 +42,7 @@ namespace proiectDAW
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             // inregistram toate repository-urile si toate serviciile (pt dependency injection)
             // transient: la fiecare injectare o instanta noua!
             services.AddTransient<IUtilizatorRepository, UtilizatorRepository>();

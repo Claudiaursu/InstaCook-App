@@ -10,5 +10,6 @@ namespace proiectDAW.Repositories.DatabaseRepository
     public interface IColectieRepository : IGenericRepository<Colectie>
     {
         List<Colectie> GetAllColectionsForUser(Guid id);
+        void updateColectie(Colectie colectie);
     }
 }

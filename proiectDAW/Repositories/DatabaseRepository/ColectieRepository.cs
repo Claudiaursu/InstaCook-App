@@ -20,5 +20,11 @@ namespace proiectDAW.Repositories.DatabaseRepository
             var colectiiUser = _table.Where(x => x.UtilizatorId == utilizId).ToList();
             return colectiiUser;
         }
+
+        public void updateColectie(Colectie colectie)
+        {
+            _table.Update(colectie);
+            //_table.Save();
+        }
     }
 }

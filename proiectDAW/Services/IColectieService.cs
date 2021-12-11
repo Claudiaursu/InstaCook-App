@@ -11,5 +11,8 @@ namespace proiectDAW.Services
     {
         List<ColectieDTO> getAllForUser(Guid id);
         ColectieDTO createColectie(Colectie colectie, Guid utilizId);
+        ColectieDTO updateColectie(Guid id, Colectie colectie);
+        Colectie FindById(Guid colectionId);
+        void Save();
     }
 }

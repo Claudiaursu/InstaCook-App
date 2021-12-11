@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace proiectDAW.Services
 {
@@ -15,6 +16,11 @@ namespace proiectDAW.Services
         public ColectieService(IColectieRepository colectieRepository, IDatePersonaleRepository datePersonaleRepository)
         {
             _colectieRepository = colectieRepository;
+        }
+
+        public Colectie FindById(Guid colectionId)
+        {
+            return _colectieRepository.FindById(colectionId);
         }
 
         public List<ColectieDTO> getAllForUser(Guid id)
@@ -52,5 +58,26 @@ namespace proiectDAW.Services
             };
             return colectieDTO;
         }
+
+        public ColectieDTO updateColectie(Guid id, Colectie colectie)
+        {
+
+
+            _colectieRepository.updateColectie(colectie);
+            _colectieRepository.Save();
+            ColectieDTO colectieDTO = new ColectieDTO()
+            {
+                Titlu_Colectie = colectie.Titlu_Colectie,
+                Descriere_Colectie = colectie.Descriere_Colectie,
+                Publica = colectie.Publica,
+                Cale_Poza = colectie.Cale_Poza
+            };
+            return colectieDTO;
+        }
+        public void Save()
+        {
+            _colectieRepository.Save();
+        }
+
     }
 }

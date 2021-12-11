@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using proiectDAW.Models;
 using proiectDAW.Services;
@@ -46,6 +47,24 @@ namespace proiectDAW.Controllers
         {
             var result = _utilizatorService.createUtilizator(utiliz);
             return Ok(result);
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult Patch([FromRoute] string id, [FromBody] JsonPatchDocument<Utilizator> utilizator)
+        {
+            //var entity = VideoGames.FirstOrDefault(videoGame => videoGame.Id == id);
+            Guid parsedId = new Guid(id);
+            Utilizator userToUpdate = _utilizatorService.FindById(parsedId);
+
+            if (userToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            utilizator.ApplyTo(userToUpdate, ModelState); // Must have Microsoft.AspNetCore.Mvc.NewtonsoftJson installed
+            _utilizatorService.Save();
+
+            return Ok(userToUpdate);
         }
     }
 }

@@ -91,5 +91,15 @@ namespace proiectDAW.Services
             return usersDTO;
         }
 
+        public Utilizator FindById(Guid id)
+        {
+            return _utilizatorRepository.FindById(id);
+        }
+
+        public void Save()
+        {
+            _utilizatorRepository.Save();
+        }
+
     }
 }
