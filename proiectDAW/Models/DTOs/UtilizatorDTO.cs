@@ -9,6 +9,7 @@ namespace proiectDAW.Models.DTOs
     {
         public string Nume { get; set; }
         public string Prenume { get; set; }
+        public string Username { get; set; }
         public int NrPuncte { get; set; }
         public string Email {get; set; }
         public string Tara_Origine { get; set; }

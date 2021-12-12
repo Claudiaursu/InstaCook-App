@@ -28,6 +28,11 @@ namespace proiectDAW.Repositories.DatabaseRepository
 
         }
 
+        public Utilizator GetByUsername(string username)
+        {
+            return _table.FirstOrDefault(x => x.Username.ToLower().Equals(username.ToLower()));
+        }
+
         public Utilizator GetByFullNameIncludingColectii(string nume, string prenume)
         {
             return _table.Include(x => x.Colectii).FirstOrDefault(x => x.Nume_Utilizator.ToLower().Equals(nume.ToLower()) &&

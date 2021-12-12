@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using proiectDAW.Data;
 using proiectDAW.Repositories.DatabaseRepository;
 using proiectDAW.Services;
+using proiectDAW.Utilities;
+using proiectDAW.Utilities.JWTUtils;
 
 namespace proiectDAW
 {
@@ -52,6 +54,9 @@ namespace proiectDAW
             services.AddTransient<IColectieService, ColectieService>();
             services.AddTransient<IUtilizatorService, UtilizatorService>();
             services.AddTransient<IDatePersonaleService, DatePersonaleService>();
+
+            services.AddScoped<IJWTUtils, JWTUtils>();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +79,7 @@ namespace proiectDAW
             });
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<JWTMiddleware>();
             app.UseMvc();
         }
     }

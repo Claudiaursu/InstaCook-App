@@ -353,3 +353,4 @@ D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Micro
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.SpaServices.Extensions.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\Microsoft.AspNetCore.WebSockets.dll
 D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\System.Net.WebSockets.WebSocketProtocol.dll
+D:\CURSURI AN 4\DEZ AP WEB\PROIECTE\proiectDAW\proiectDAW\bin\Debug\net461\BCrypt.Net-Core.dll

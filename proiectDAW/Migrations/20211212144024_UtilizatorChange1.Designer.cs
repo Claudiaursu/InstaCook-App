@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proiectDAW.Data;
 
 namespace proiectDAW.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20211212144024_UtilizatorChange1")]
+    partial class UtilizatorChange1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -241,8 +243,8 @@ namespace proiectDAW.Migrations
                     b.Property<string>("Prenume_Utilizator")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rol")
-                        .HasColumnType("int");
+                    b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Total_Puncte")
                         .HasColumnType("int");

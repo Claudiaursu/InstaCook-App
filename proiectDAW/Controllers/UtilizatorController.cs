@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using proiectDAW.Models;
+using proiectDAW.Models.Authentication;
 using proiectDAW.Services;
+using proiectDAW.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +38,7 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
+        [Authorization(Rol.Admin)]
         [HttpGet("getAll")]
         public IActionResult getAllWithInclude()
         {
@@ -65,6 +69,20 @@ namespace proiectDAW.Controllers
             _utilizatorService.Save();
 
             return Ok(userToUpdate);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(UtilizatorRequestDTO utilizator)
+        {
+            var response = _utilizatorService.Authenticate(utilizator);
+
+            if (response == null)
+            {
+                return BadRequest(new { Message = "Username or Password is invalid!" });
+            }
+
+            return Ok(response);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using proiectDAW.Models;
+using BC = BCrypt.Net.BCrypt;
+using proiectDAW.Models.Authentication;
 using proiectDAW.Models.DTOs;
 using proiectDAW.Models.One_To_One;
 using proiectDAW.Repositories.DatabaseRepository;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using proiectDAW.Utilities.JWTUtils;
 
 namespace proiectDAW.Services
 {
@@ -13,11 +16,13 @@ namespace proiectDAW.Services
     {
         public IUtilizatorRepository _utilizatorRepository;
         public IDatePersonaleRepository _datePersonaleRepository;
+        public IJWTUtils _ijwtUtils;
 
-        public UtilizatorService(IUtilizatorRepository utilizatorRepository, IDatePersonaleRepository datePersonaleRepository)
+        public UtilizatorService(IUtilizatorRepository utilizatorRepository, IDatePersonaleRepository datePersonaleRepository, IJWTUtils ijwtUtils)
         {
             _utilizatorRepository = utilizatorRepository;
             _datePersonaleRepository = datePersonaleRepository;
+            _ijwtUtils = ijwtUtils;
         }
 
 
@@ -34,7 +39,20 @@ namespace proiectDAW.Services
             return utilizDTO;
         }
 
-        
+        public UtilizatorDTO getUtilizatorByUsername(string username)
+        {
+            Utilizator utiliz = _utilizatorRepository.GetByUsername(username);
+            UtilizatorDTO utilizDTO = new UtilizatorDTO()
+            {
+                Nume = utiliz.Nume_Utilizator,
+                Prenume = utiliz.Prenume_Utilizator,
+                NrPuncte = utiliz.Total_Puncte,
+                Email = ""
+            };
+            return utilizDTO;
+        }
+
+
         public UtilizatorDTO getUtilizatorByNameWithDate(string nume, string prenume)
         {
             Utilizator utiliz = _utilizatorRepository.GetByFullNameIncludingDatePersonale(nume, prenume);
@@ -45,7 +63,8 @@ namespace proiectDAW.Services
                 NrPuncte = utiliz.Total_Puncte,
                 Email = utiliz.Date_Personale.Email,
                 Telefon = utiliz.Date_Personale.Telefon,
-                Tara_Origine = utiliz.Date_Personale.Tara_Origine
+                Tara_Origine = utiliz.Date_Personale.Tara_Origine,
+                Username = utiliz.Username
             };
             return utilizDTO;
         }
@@ -56,6 +75,7 @@ namespace proiectDAW.Services
             _utilizatorRepository.Save();
 
             utiliz.Date_PersonaleId = datePers.Id;
+            utiliz.ParolaHashed = BC.HashPassword(utiliz.ParolaHashed);
 
             _utilizatorRepository.Create(utiliz);
             _utilizatorRepository.Save();
@@ -66,7 +86,8 @@ namespace proiectDAW.Services
                 NrPuncte = utiliz.Total_Puncte,
                 Email = utiliz.Date_Personale.Email,
                 Tara_Origine = utiliz.Date_Personale.Tara_Origine,
-                Telefon = utiliz.Date_Personale.Telefon
+                Telefon = utiliz.Date_Personale.Telefon,
+                Username = utiliz.Username
             };
             return utilizDTO;
         }
@@ -84,7 +105,8 @@ namespace proiectDAW.Services
                     NrPuncte = utilizator.Total_Puncte,
                     Email = utilizator.Date_Personale.Email,
                     Tara_Origine = utilizator.Date_Personale.Tara_Origine,
-                    Telefon = utilizator.Date_Personale.Telefon
+                    Telefon = utilizator.Date_Personale.Telefon,
+                    Username = utilizator.Username
                 };
                 usersDTO.Add(userDTO);
             });
@@ -101,5 +123,17 @@ namespace proiectDAW.Services
             _utilizatorRepository.Save();
         }
 
+        public UtilizatorResponseDTO Authenticate(UtilizatorRequestDTO request)
+        {
+            var user = _utilizatorRepository.GetByUsername(request.Username);
+            if (user == null || !BC.Verify(request.Parola, user.ParolaHashed))
+            {
+                return null;
+            }
+            //generam un jwt token (jwt = json web token)
+            var token = _ijwtUtils.GenerateJWTToken(user);
+            return new UtilizatorResponseDTO(user, token);
+
+        }
     }
 }

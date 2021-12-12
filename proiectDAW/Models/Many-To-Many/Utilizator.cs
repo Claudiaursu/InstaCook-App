@@ -1,10 +1,12 @@
-﻿using proiectDAW.Models.Base;
+﻿using proiectDAW.Models.Authentication;
+using proiectDAW.Models.Base;
 using proiectDAW.Models.Many_To_Many;
 using proiectDAW.Models.One_To_Many;
 using proiectDAW.Models.One_To_One;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace proiectDAW.Models
@@ -18,7 +20,14 @@ namespace proiectDAW.Models
         public Guid Date_PersonaleId { get; set; }
 
         public int Total_Puncte { get; set; }
-        public bool Admin { get; set; }
+
+        [JsonIgnore]
+        public string ParolaHashed { get; set; }
+
+        public string Username { get; set; }
+
+        public Rol Rol { get; set; }
+
 
         //un utilizator are mai multe colectii
         public ICollection<Colectie> Colectii { get; set; }
