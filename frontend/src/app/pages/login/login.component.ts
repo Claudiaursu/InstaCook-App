@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginUser } from 'src/app/interfaces/login_user';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,9 +11,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   public isDisabled: boolean = false;
-  public user : any = {
+  public user : LoginUser = {
     Username : "",
-    Parola: ""
+    Parola: "",
   }
   public error : boolean | string = false
 
