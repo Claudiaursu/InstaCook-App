@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       let userToCreate = {
         Nume_Utilizator: this.newUserForm.value.nume,
         Prenume_Utilizator: this.newUserForm.value.prenume,
-        Parola_Hashed: this.newUserForm.value.parola,
+        ParolaHashed: this.newUserForm.value.parola,
         Date_Personale: {
           Email: this.newUserForm.value.email,
           Tara_Origine: this.newUserForm.value.taraOrigine,
