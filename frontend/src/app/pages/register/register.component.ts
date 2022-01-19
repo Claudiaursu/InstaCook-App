@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
       parola: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', Validators.pattern(this.emailRegex)],
       taraOrigine: [''],
-      telefon: ['']
+      telefon: ['', Validators.pattern("[0-9]{10}")]
     })
   }
 

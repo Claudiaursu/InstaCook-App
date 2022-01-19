@@ -26,11 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-    console.log("trala")
     this.error = false
 
     this.authService.login(this.user).subscribe((response : any) =>{
-      console.log("RASPUNS logare: ", response)
       if(response && response.token){
         localStorage.setItem('token', response.token);
         this.router.navigate(['/homepage']);
