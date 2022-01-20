@@ -1,3 +1,5 @@
+<app-menu></app-menu>
+
 
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
   <!-- Nume Column -->
@@ -21,3 +23,14 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+
+<ul>
+  <li *ngFor = "let user of users">
+    <app-user-info>
+      [nume] = "user.nume"
+      [prenume] = "user.prenume"
+    </app-user-info>
+    <!-- {{user.nume}} -->
+  </li>
+</ul>

@@ -12,6 +12,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import {MatTableModule} from '@angular/material/table';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SharedModule } from './shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     NoopAnimationsModule,
     ReactiveFormsModule,
     MatTableModule,
+    SharedModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [
     {
