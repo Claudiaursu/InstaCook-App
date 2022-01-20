@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import {MatTableModule} from '@angular/material/table';
+import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import {MatTableModule} from '@angular/material/table';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomepageComponent
+    HomepageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,13 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorsInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
