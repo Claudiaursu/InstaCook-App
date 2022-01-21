@@ -1,4 +1,4 @@
-<app-menu></app-menu>
+<app-menu [user] = "loggedUser"></app-menu>
 
 
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
@@ -27,9 +27,9 @@
 
 <ul>
   <li *ngFor = "let user of users">
-    <app-user-info>
-      [nume] = "user.nume"
-      [prenume] = "user.prenume"
+    <app-user-info
+    [nume] = "user.nume"
+    [prenume] = "user.prenume">
     </app-user-info>
     <!-- {{user.nume}} -->
   </li>

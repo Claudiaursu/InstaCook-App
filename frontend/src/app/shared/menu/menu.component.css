@@ -1,4 +1,11 @@
 .nav-link.hello-message{
-  align-items:flex-end;
-  color: brown;
+  align-items:center;
+  color: rgb(165, 42, 128);
+  margin-left: 870%;
+}
+
+.navbar-brand.title{
+  color:rgb(197, 13, 90);
+  font-weight: bold;
+  margin-left: 4%;
 }

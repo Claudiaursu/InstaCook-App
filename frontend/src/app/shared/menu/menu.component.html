@@ -1,5 +1,5 @@
-<nav  class="navbar navbar-light" style="background-color: #9dedf3;" class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">InstaCook</a>
+<nav  class="navbar navbar-light" style="background-color: #75e1e9;" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand title" href="#">InstaCook</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,18 +9,24 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Acasa</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf= "user!=null">
         <a class="nav-link" href="#">Profil</a>
+      </li>
+      <li class="nav-item" *ngIf= "user==null">
+        <a class="nav-link" href="#">Creeaza cont</a>
+      </li>
+      <li class="nav-item" *ngIf= "user==null">
+        <a class="nav-link" href="#">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Retete</a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link hello-message">Buna, </a>
+      <li class="nav-item" *ngIf= "user!=null">
+        <a style="color: rgb(165, 42, 128);" class="nav-link"> Buna, {{user.username}}!</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
+      <li class="nav-item" *ngIf= "user!=null" (click)="logout()">
+        <a class="nav-link" style="margin-left: 850px;">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
