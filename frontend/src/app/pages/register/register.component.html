@@ -1,42 +1,45 @@
-<form [formGroup]="newUserForm" (ngSubmit)="createNewAccount()">
+<app-menu [user] = ""></app-menu>
 
-  <div class = "form-group">
-    <label>Username</label>
-    <input class = "form-control" formControlName = "username"
-    [ngClass]="newUserForm.controls['username'].dirty && newUserForm.controls['username'].errors? 'is-invalid': ''"
-    >
-  </div>
-  <div class = "form-group">
-    <label>Nume</label>
-    <input class = "form-control" formControlName = "nume"
-    [ngClass]="newUserForm.controls['nume'].dirty && newUserForm.controls['nume'].errors? 'is-invalid': ''"
-    >
-  </div>
-  <div class = "form-group">
-    <label>Prenume</label>
-    <input class = "form-control" formControlName = "prenume"
-    [ngClass]="newUserForm.controls['prenume'].dirty && newUserForm.controls['prenume'].errors? 'is-invalid': ''"
-    >
-  </div>
-  <div class = "form-group">
-    <label>Email</label>
-    <input class = "form-control" formControlName = "email"
-    [ngClass]="newUserForm.controls['email'].dirty && newUserForm.controls['email'].errors? 'is-invalid': ''"
-    >
-  </div>
-  <div class = "form-group">
-    <label>Telefon</label>
-    <input class = "form-control" formControlName = "telefon"
-    [ngClass]="newUserForm.controls['telefon'].dirty && newUserForm.controls['telefon'].errors? 'is-invalid': ''"
-    >
-  </div>
-  <div class = "form-group">
-    <label>Parola</label>
-    <input class = "form-control" formControlName = "parola" type="password"
-    [ngClass]="newUserForm.controls['parola'].dirty && newUserForm.controls['parola'].errors? 'is-invalid': ''"
-    >
-  </div>
+<div class="basic">
+  <form [formGroup]="newUserForm" (ngSubmit)="createNewAccount()">
 
-  <button type="submit" [disabled]="newUserForm.invalid" class="btn btn-success">Creeaza cont</button>
+    <div class = "form-group">
+      <label>Username</label>
+      <input class = "form-control" formControlName = "username"
+      [ngClass]="newUserForm.controls['username'].dirty && newUserForm.controls['username'].errors? 'is-invalid': ''"
+      >
+    </div>
+    <div class = "form-group">
+      <label>Nume</label>
+      <input class = "form-control" formControlName = "nume"
+      [ngClass]="newUserForm.controls['nume'].dirty && newUserForm.controls['nume'].errors? 'is-invalid': ''"
+      >
+    </div>
+    <div class = "form-group">
+      <label>Prenume</label>
+      <input class = "form-control" formControlName = "prenume"
+      [ngClass]="newUserForm.controls['prenume'].dirty && newUserForm.controls['prenume'].errors? 'is-invalid': ''"
+      >
+    </div>
+    <div class = "form-group">
+      <label>Email</label>
+      <input class = "form-control" formControlName = "email"
+      [ngClass]="newUserForm.controls['email'].dirty && newUserForm.controls['email'].errors? 'is-invalid': ''"
+      >
+    </div>
+    <div class = "form-group">
+      <label>Telefon</label>
+      <input class = "form-control" formControlName = "telefon"
+      [ngClass]="newUserForm.controls['telefon'].dirty && newUserForm.controls['telefon'].errors? 'is-invalid': ''"
+      >
+    </div>
+    <div class = "form-group">
+      <label>Parola</label>
+      <input class = "form-control" formControlName = "parola" type="password"
+      [ngClass]="newUserForm.controls['parola'].dirty && newUserForm.controls['parola'].errors? 'is-invalid': ''"
+      >
+    </div>
 
-</form>
+    <button type="submit" [disabled]="newUserForm.invalid" class="btn btn-success">Creeaza cont</button>
+  </form>
+</div>

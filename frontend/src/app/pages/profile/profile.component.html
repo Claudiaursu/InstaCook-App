@@ -1,1 +1,14 @@
-<p>profile works!</p>
+<app-menu [user] = "loggedUser"></app-menu>
+
+<mat-card class="cardStyle">
+  <mat-card-title class="title">Bucatar {{loggedUser.username}}</mat-card-title>
+  <mat-card-content>
+    <h6>Nume: {{loggedUser.prenume}} {{loggedUser.nume}}</h6>
+    <h6>Telefon: {{loggedUser.telefon}}</h6>
+    <h6>Email: {{loggedUser.email}}</h6>
+    <h6>Tara: {{loggedUser.tara}}</h6>
+    <h6>Puncte acumulate: {{loggedUser.nrPuncte}}</h6>
+
+  </mat-card-content>
+</mat-card>
+
