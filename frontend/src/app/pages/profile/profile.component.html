@@ -8,7 +8,11 @@
     <h6>Email: {{loggedUser.email}}</h6>
     <h6>Tara: {{loggedUser.tara}}</h6>
     <h6>Puncte acumulate: {{loggedUser.nrPuncte}}</h6>
-
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>
+      <a class="nav-link" routerLink="/profile/{{loggedUser.id}}/newCollection" routerLinkActive="active">Adauga o colectie</a>
+    </button>
+  </mat-card-actions>
 </mat-card>
 

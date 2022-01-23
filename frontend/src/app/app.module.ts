@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
+import { CollectionsModule } from './collections/collections.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatTableModule,
     SharedModule,
+    CollectionsModule,
     MatIconModule,
     MatMenuModule,
     MatCardModule,
