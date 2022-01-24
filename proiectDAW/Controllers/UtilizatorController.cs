@@ -31,6 +31,14 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getById/{id}")]
+        public IActionResult getById([FromRoute] string id)
+        {
+            var guidID = new Guid(id);
+            var result = _utilizatorService.FindByIdWithData(guidID);
+            return Ok(result);
+        }
+
         [HttpGet("detaliiUtilizator")]
         public IActionResult getByFullNameWithData(string nume, string prenume)
         {
@@ -38,7 +46,8 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
-        [Authorization(Rol.Admin)]
+        //[Authorization(Rol.Admin)]
+        //[Authorization]
         [HttpGet("getAll")]
         public IActionResult getAllWithInclude()
         {
@@ -83,6 +92,23 @@ namespace proiectDAW.Controllers
             }
 
             return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser([FromRoute] string id)
+        {
+            Guid guidId = new Guid(id);
+            Utilizator utilizatorToDelete = _utilizatorService.FindById(guidId);
+            if (utilizatorToDelete == null)
+            {
+                return NotFound();
+            }
+            _utilizatorService.deleteUser(utilizatorToDelete);
+            _utilizatorService.Save();
+
+
+
+            return Ok(utilizatorToDelete);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace proiectDAW.Repositories.DatabaseRepository
         Utilizator GetByFullNameIncludingColectii(string nume, string prenume);
         List<Utilizator> GetAllWithInclude();
         Utilizator GetByFullNameIncludingDatePersonale(string nume, string prenume);
+        Utilizator GetByIdIncludingDatePersonale(Guid Id);
         Utilizator GetByUsername(string username);
+        void GroupBy();
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using proiectDAW.Models.Authentication;
 using proiectDAW.Models.One_To_Many;
 using proiectDAW.Services;
+using proiectDAW.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,7 @@ namespace proiectDAW.Controllers
             return Ok(usersList);
         }
 
+        //[Authorization(Rol.Admin)]
         [HttpPost("{userId}")]
         public IActionResult AddColectie(Colectie colectie, Guid userId)
         {
@@ -92,7 +95,6 @@ namespace proiectDAW.Controllers
         [HttpPatch("{colId}")]
         public IActionResult Patch([FromRoute] string colId, [FromBody] JsonPatchDocument<Colectie> colectie)
         {
-            //var entity = VideoGames.FirstOrDefault(videoGame => videoGame.Id == id);
             Guid parsedId = new Guid(colId);
             Colectie colectieToUpdate = _colectieService.FindById(parsedId);
 
@@ -101,10 +103,28 @@ namespace proiectDAW.Controllers
                 return NotFound();
             }
 
-            colectie.ApplyTo(colectieToUpdate, ModelState); // Must have Microsoft.AspNetCore.Mvc.NewtonsoftJson installed
+            colectie.ApplyTo(colectieToUpdate, ModelState); 
             _colectieService.Save();
 
             return Ok(colectieToUpdate);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteColectie([FromRoute] string id)
+        {
+            Guid guidId = new Guid(id);
+            Colectie colectieToDelete = _colectieService.FindById(guidId); 
+            if (colectieToDelete == null)
+            {
+                return NotFound();
+            }
+            _colectieService.deleteColectie(colectieToDelete);
+            _colectieService.Save();
+
+
+
+            return Ok(colectieToDelete);
+        }
     }
 }
+

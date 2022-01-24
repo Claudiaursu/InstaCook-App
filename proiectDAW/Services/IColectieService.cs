@@ -14,5 +14,7 @@ namespace proiectDAW.Services
         ColectieDTO updateColectie(Guid id, Colectie colectie);
         Colectie FindById(Guid colectionId);
         void Save();
+
+        ColectieDTO deleteColectie(Colectie colectie);
     }
 }

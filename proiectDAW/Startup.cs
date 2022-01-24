@@ -21,6 +21,7 @@ namespace proiectDAW
 {
     public class Startup
     {
+        private string CorsAllowSpecificOrigin = "frontendAllowOrigin";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -50,13 +51,32 @@ namespace proiectDAW
             services.AddTransient<IUtilizatorRepository, UtilizatorRepository>();
             services.AddTransient<IDatePersonaleRepository, DatePersonaleRepository>();
             services.AddTransient<IColectieRepository, ColectieRepository>();
+            services.AddTransient<IRetetaRepository, RetetaRepository>();
+            services.AddTransient<IBucatarieRepository, BucatarieRepository>();
+
 
             services.AddTransient<IColectieService, ColectieService>();
             services.AddTransient<IUtilizatorService, UtilizatorService>();
             services.AddTransient<IDatePersonaleService, DatePersonaleService>();
+            services.AddTransient<IRetetaService, RetetaService>();
+            services.AddTransient<IBucatarieService, BucatarieService>();
+
 
             services.AddScoped<IJWTUtils, JWTUtils>();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy(name: CorsAllowSpecificOrigin,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                    });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +97,18 @@ namespace proiectDAW
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyApi");
                 c.RoutePrefix = string.Empty;
             });
+            
+            app.Use(async (c, n) => {
+                c.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                await n.Invoke();
+            });
+            
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()) ;
+            
 
             app.UseHttpsRedirection();
             app.UseMiddleware<JWTMiddleware>();

@@ -92,8 +92,6 @@ namespace proiectDAW.Repositories.GenericRepository
         {
             return _table.Find(id);
 
-            // another option
-            // return _table.FirstOrDefault(x=> x.Id.Equals(id));
         }
 
         public async Task<TEntity> FindByIdAsync(object id)

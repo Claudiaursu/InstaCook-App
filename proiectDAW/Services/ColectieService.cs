@@ -79,5 +79,18 @@ namespace proiectDAW.Services
             _colectieRepository.Save();
         }
 
+        public ColectieDTO deleteColectie(Colectie colectie)
+        {
+            _colectieRepository.Delete(colectie);
+            ColectieDTO colectieDTO = new ColectieDTO()
+            {
+                Titlu_Colectie = colectie.Titlu_Colectie,
+                Descriere_Colectie = colectie.Descriere_Colectie,
+                Publica = colectie.Publica,
+                Cale_Poza = colectie.Cale_Poza
+            };
+            return colectieDTO;
+        }
+
     }
 }

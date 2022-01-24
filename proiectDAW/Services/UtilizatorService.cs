@@ -118,6 +118,23 @@ namespace proiectDAW.Services
             return _utilizatorRepository.FindById(id);
         }
 
+        public UtilizatorDTO FindByIdWithData(Guid id)
+        {
+            Utilizator utiliz = _utilizatorRepository.GetByIdIncludingDatePersonale(id);
+
+            UtilizatorDTO utilizDTO = new UtilizatorDTO()
+            {
+                Nume = utiliz.Nume_Utilizator,
+                Prenume = utiliz.Prenume_Utilizator,
+                NrPuncte = utiliz.Total_Puncte,
+                Email = utiliz.Date_Personale.Email,
+                Telefon = utiliz.Date_Personale.Telefon,
+                Tara_Origine = utiliz.Date_Personale.Tara_Origine,
+                Username = utiliz.Username
+            };
+            return utilizDTO;
+        }
+
         public void Save()
         {
             _utilizatorRepository.Save();
@@ -134,6 +151,22 @@ namespace proiectDAW.Services
             var token = _ijwtUtils.GenerateJWTToken(user);
             return new UtilizatorResponseDTO(user, token);
 
+        }
+
+        public UtilizatorDTO deleteUser(Utilizator utilizator)
+        {
+            _utilizatorRepository.Delete(utilizator);
+            UtilizatorDTO utilizatorDTO = new UtilizatorDTO()
+            {
+                Nume = utilizator.Nume_Utilizator,
+                Prenume = utilizator.Prenume_Utilizator,
+                NrPuncte = utilizator.Total_Puncte,
+                Email = utilizator.Date_Personale.Email,
+                Telefon = utilizator.Date_Personale.Telefon,
+                Tara_Origine = utilizator.Date_Personale.Tara_Origine,
+                Username = utilizator.Username
+            };
+            return utilizatorDTO;
         }
     }
 }
