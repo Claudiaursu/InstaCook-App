@@ -26,5 +26,15 @@ namespace proiectDAW.Repositories.DatabaseRepository
             _table.Update(colectie);
             //_table.Save();
         }
+
+        //LinQ
+        public Colectie FindByTitlu(String titlu)
+        {
+            //var colectie = from c in _table
+            //             where c.Titlu_Colectie.ToString() == titlu
+            //             select c;
+            //return colectie.FirstOrDefault();
+            return _table.FirstOrDefault(x => x.Titlu_Colectie.ToLower().Equals(titlu));
+        }
     }
 }

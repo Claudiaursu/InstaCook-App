@@ -13,6 +13,7 @@ namespace proiectDAW.Services
         ColectieDTO createColectie(Colectie colectie, Guid utilizId);
         ColectieDTO updateColectie(Guid id, Colectie colectie);
         Colectie FindById(Guid colectionId);
+        Colectie FindByTitle(String titlu);
         void Save();
 
         ColectieDTO deleteColectie(Colectie colectie);

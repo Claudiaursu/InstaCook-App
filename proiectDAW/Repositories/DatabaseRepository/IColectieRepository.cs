@@ -11,5 +11,6 @@ namespace proiectDAW.Repositories.DatabaseRepository
     {
         List<Colectie> GetAllColectionsForUser(Guid id);
         void updateColectie(Colectie colectie);
+        Colectie FindByTitlu(String titlu);
     }
 }

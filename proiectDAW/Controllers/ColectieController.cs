@@ -125,6 +125,22 @@ namespace proiectDAW.Controllers
 
             return Ok(colectieToDelete);
         }
+
+        [HttpDelete("deleteByTitle{titlu}")]
+        public IActionResult DeleteColectieByTitlu([FromRoute] string titlu)
+        {
+            Colectie colectieToDelete = _colectieService.FindByTitle(titlu);
+            if (colectieToDelete == null)
+            {
+                return NotFound();
+            }
+            _colectieService.deleteColectie(colectieToDelete);
+            _colectieService.Save();
+
+
+
+            return Ok(colectieToDelete);
+        }
     }
 }
 

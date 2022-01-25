@@ -23,6 +23,11 @@ namespace proiectDAW.Services
             return _colectieRepository.FindById(colectionId);
         }
 
+        public Colectie FindByTitle(String titlu)
+        {
+            return _colectieRepository.FindByTitlu(titlu);
+        }
+
         public List<ColectieDTO> getAllForUser(Guid id)
         {
             var colectii = _colectieRepository.GetAllColectionsForUser(id);
