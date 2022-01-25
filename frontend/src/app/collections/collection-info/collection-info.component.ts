@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Colectie } from 'src/app/interfaces/colectie';
 
 @Component({
   selector: 'app-collection-info',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionInfoComponent implements OnInit {
 
+  @Input() colectii: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

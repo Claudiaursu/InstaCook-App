@@ -27,4 +27,9 @@ export class InstaCookService {
     const url = this.baseUrl + `/Colectie/${userId}`;
     return this.http.post(url , newCollection, this.headers);
    }
+
+   getAllColectii(userId: string){
+    const url = this.baseUrl + `/Colectie/getAllForUser/${userId}`;
+    return this.http.get<any[]>(url, this.headers);
+   }
 }

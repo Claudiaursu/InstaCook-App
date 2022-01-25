@@ -1,1 +1,14 @@
-<p>collection-info works!</p>
+<div class="stil-colectii">
+<mat-card class="example-card stil" *ngFor="let colectie of colectii">
+  <mat-card-title style="color: brown;">{{colectie.titlu_Colectie}}</mat-card-title>
+  <mat-card-subtitle>Descriere</mat-card-subtitle>
+  <mat-card-content>
+    <h6>{{colectie.descriere_Colectie}}</h6>
+    <h6>Publica: {{colectie.publica}}</h6>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+</div>

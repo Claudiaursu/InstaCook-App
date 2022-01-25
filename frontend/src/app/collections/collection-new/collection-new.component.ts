@@ -13,7 +13,7 @@ import { InstaCookService } from 'src/app/services/instacook.service';
 export class CollectionNewComponent implements OnInit {
 
   public newCollectionForm!: FormGroup;
-  public loggedUser: any;
+  loggedUser: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,7 +52,6 @@ export class CollectionNewComponent implements OnInit {
       console.log(collection)
       this.instaCookService.createNewColection(this.loggedUser.id, collection).subscribe(response =>{
         console.log(response)
-        this.router.navigate(['/homepage']);
       })
   }
   }

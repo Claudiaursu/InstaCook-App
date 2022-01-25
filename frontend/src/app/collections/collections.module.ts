@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatCardModule,
   ],
   exports: [
     CollectionInfoComponent,

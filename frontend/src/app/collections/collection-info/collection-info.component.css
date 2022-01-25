@@ -1,0 +1,13 @@
+.example-card {
+  max-width: 400px;
+}
+.example-card.stil{
+  background-color: rgb(245, 212, 245);
+  margin:2%;
+}
+
+.stil-colectii{
+  display:flex;
+  margin-left: 2%;
+  margin-right: 2%;
+}

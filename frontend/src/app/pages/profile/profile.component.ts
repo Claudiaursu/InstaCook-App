@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Colectie } from 'src/app/interfaces/colectie';
 import { InstaCookService } from 'src/app/services/instacook.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { InstaCookService } from 'src/app/services/instacook.service';
 })
 export class ProfileComponent implements OnInit {
 
-  public loggedUser: any = null;
+  loggedUser: any = null;
+  colectiiUser: any[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -17,6 +19,11 @@ export class ProfileComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getLoggedUserInfo();
+    this.getColectiiForUser();
+  }
+
+  getLoggedUserInfo(){
     this.activatedRoute.params.subscribe((params: any) => {
       console.log(params)
       this.loggedUser = {
@@ -40,6 +47,13 @@ export class ProfileComponent implements OnInit {
         console.log("am logged user: ", this.loggedUser)
       })
     })
+  }
+
+  getColectiiForUser(){
+   this.instaCookService.getAllColectii(this.loggedUser.id).subscribe(response =>{
+    this.colectiiUser = response;
+    console.log("&&&&&&&",this.colectiiUser)
+   })
   }
 
 }
