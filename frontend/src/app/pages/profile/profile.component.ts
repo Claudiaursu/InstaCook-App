@@ -56,4 +56,12 @@ export class ProfileComponent implements OnInit {
    })
   }
 
+  deleteCollection(titlu: string){
+    console.log("a intrat in fct de delete profile")
+    this.instaCookService.deleteColectie(titlu).subscribe(response=>{
+      console.log("response delete", response)
+    });
+    window.location.reload();
+  }
+
 }

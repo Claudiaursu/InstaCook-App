@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Colectie } from 'src/app/interfaces/colectie';
 
 @Component({
@@ -9,10 +9,17 @@ import { Colectie } from 'src/app/interfaces/colectie';
 export class CollectionInfoComponent implements OnInit {
 
   @Input() colectii: any[] = [];
+  @Output() onDeleteColectie: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  deleteColectie(titlu: string){
+    this.onDeleteColectie.emit(titlu)
+    console.log("s-a emis ", titlu)
   }
 
 }

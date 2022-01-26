@@ -32,4 +32,10 @@ export class InstaCookService {
     const url = this.baseUrl + `/Colectie/getAllForUser/${userId}`;
     return this.http.get<any[]>(url, this.headers);
    }
+
+   deleteColectie(titlu: string){
+     console.log("titlu venit ", titlu)
+    const url = this.baseUrl + `/Colectie/deleteByTitle${titlu}`;
+    return this.http.delete(url, this.headers);
+   }
 }

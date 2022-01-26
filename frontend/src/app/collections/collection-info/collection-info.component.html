@@ -7,8 +7,7 @@
     <h6>Publica: {{colectie.publica}}</h6>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button class="btn btn-danger" (click)="deleteColectie(colectie.titlu_Colectie)">Sterge</button>
   </mat-card-actions>
 </mat-card>
 </div>

@@ -53,6 +53,7 @@ export class CollectionNewComponent implements OnInit {
       this.instaCookService.createNewColection(this.loggedUser.id, collection).subscribe(response =>{
         console.log(response)
       })
-  }
+    }
+    this.router.navigate([`/profile/${this.loggedUser.id}`])
   }
 }
