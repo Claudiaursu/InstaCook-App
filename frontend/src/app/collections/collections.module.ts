@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
+import { RetetaInfoComponent } from './reteta-info/reteta-info.component';
 
 
 @NgModule({
   declarations: [
     CollectionInfoComponent,
     CollectionNewComponent,
+    RetetaInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import {MatCardModule} from '@angular/material/card';
   ],
   exports: [
     CollectionInfoComponent,
-    CollectionNewComponent
+    CollectionNewComponent,
+    RetetaInfoComponent
   ]
 })
 export class CollectionsModule { }

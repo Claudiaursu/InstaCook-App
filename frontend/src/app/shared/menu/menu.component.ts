@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('loggedUserId');
     localStorage.removeItem('loggedUsername');
+    localStorage.removeItem('permissions')
     this.router.navigate(['/homepage']);
     window.location.reload();
   }

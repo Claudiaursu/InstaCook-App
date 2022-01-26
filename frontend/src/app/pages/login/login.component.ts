@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
 
   doLogin(){
     this.error = false
-
     this.authService.login(this.user).subscribe((response : any) =>{
       if(response && response.token){
         localStorage.setItem('token', response.token);
         localStorage.setItem('loggedUserId', response.id);
         localStorage.setItem('loggedUsername', response.username);
 
+        const permissions = {
+          retete: "true"
+        }
+        localStorage.setItem('permissions', JSON.stringify(permissions))
         this.router.navigate(['/homepage']);
       }
     })
