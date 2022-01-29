@@ -5,12 +5,12 @@
 
     <div class="form-group">
       <label>Titlul Colectiei</label>
-      <input class = "form-control" formControlName = "titlu"
+      <input (keyup)="onKeyUpTitle($event)" class = "form-control" formControlName = "titlu"
       >
     </div>
     <div class="form-group">
       <label>Descriere</label>
-      <input class = "form-control" formControlName = "descriere"
+      <input (keyup)="onKeyUpDescriere($event)" class = "form-control" formControlName = "descriere"
       >
     </div>
     <div class="form-group">

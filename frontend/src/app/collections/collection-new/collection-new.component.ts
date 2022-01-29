@@ -32,6 +32,45 @@ export class CollectionNewComponent implements OnInit {
       username: localStorage.getItem('loggedUsername'),
       token: localStorage.getItem('token'),
     }
+    this.addDeafultExitPermissions()
+  }
+
+  addDeafultExitPermissions(){
+    let permissions = localStorage.getItem('permissions')
+    if(permissions){
+      const permissionsParsed = JSON.parse(permissions)
+      permissions = {
+        ...permissionsParsed,
+        exitNewCollection: "true"
+      }
+      localStorage.setItem('permissions', JSON.stringify(permissions))
+      console.log("permissions: ",JSON.parse(localStorage.getItem('permissions') || ''))
+    }
+  }
+
+  removeExitPermissions(){
+    let permissions = localStorage.getItem('permissions')
+    if(permissions){
+      const permissionsParsed = JSON.parse(permissions)
+      permissions = {
+        ...permissionsParsed,
+        exitNewCollection: "false"
+      }
+      localStorage.setItem('permissions', JSON.stringify(permissions))
+      console.log("permissions: ",JSON.parse(localStorage.getItem('permissions') || ''))
+    }
+  }
+
+  getExitPermission(){
+    let permissions = localStorage.getItem('permissions')
+    if(permissions){
+      const permissionsParsed = JSON.parse(permissions)
+      if(permissionsParsed?.exitNewCollection == "true"){
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 
   onChangeToggle($event: MatSlideToggleChange){
@@ -39,7 +78,27 @@ export class CollectionNewComponent implements OnInit {
     this.newCollectionForm.get('publica')?.patchValue($event.checked)
   }
 
+  onKeyUpTitle($event: any){
+    if(this.newCollectionForm.value.titlu != ''){
+      this.removeExitPermissions();
+    }
+    else{
+      this.addDeafultExitPermissions();
+    }
+  }
+
+  onKeyUpDescriere($event: any){
+    if(this.newCollectionForm.value.descriere != ''){
+      this.removeExitPermissions();
+    }
+    else{
+      this.addDeafultExitPermissions();
+    }
+  }
+
   createNewCollection(){
+    let permissions = localStorage.getItem('permissions')
+
     console.log(this.newCollectionForm)
     if(this.newCollectionForm.valid){
 
