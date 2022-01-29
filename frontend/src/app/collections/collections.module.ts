@@ -12,6 +12,9 @@ import { SharedModule } from '../shared/shared.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import { RetetaInfoComponent } from './reteta-info/reteta-info.component';
+import { AppModule } from '../app.module';
+import { PrivateOrPublicTogglePipe } from '../application-pipes/private-or-public-toggle-pipe/private-or-public-toggle.pipe';
+import { ApplicationPipesModule } from '../application-pipes/application-pipes.module';
 
 
 @NgModule({
@@ -31,6 +34,7 @@ import { RetetaInfoComponent } from './reteta-info/reteta-info.component';
     SharedModule,
     MatSlideToggleModule,
     MatCardModule,
+    ApplicationPipesModule
   ],
   exports: [
     CollectionInfoComponent,

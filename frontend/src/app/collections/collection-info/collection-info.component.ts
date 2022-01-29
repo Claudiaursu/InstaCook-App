@@ -9,12 +9,14 @@ import { Colectie } from 'src/app/interfaces/colectie';
 export class CollectionInfoComponent implements OnInit {
 
   @Input() colectii: any[] = [];
+  @Input() showPrivate: boolean = false;
   @Output() onDeleteColectie: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
-
+    console.log("colectii ", this.colectii)
+    console.log("showprivate: ", this.showPrivate)
   }
 
   deleteColectie(titlu: string){

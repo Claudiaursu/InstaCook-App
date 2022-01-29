@@ -16,7 +16,13 @@
   </mat-card-actions>
 </mat-card>
 
+<mat-slide-toggle class="example-margin toggle" style="align-self: flex-end;"
+(change)="changePrivacyToggle($event)"
+>Vezi toate retetele
+</mat-slide-toggle>
+
 <app-collection-info
   [colectii]="colectiiUser"
+  [showPrivate]="showPrivateCollections"
   (onDeleteColectie)="deleteCollection($event)"
 ></app-collection-info>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { Colectie } from 'src/app/interfaces/colectie';
 import { InstaCookService } from 'src/app/services/instacook.service';
@@ -12,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   loggedUser: any = null;
   colectiiUser: any[] = [];
+  showPrivateCollections: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getLoggedUserInfo();
     this.getColectiiForUser();
+    console.log("colectii pag profil: ", this.colectiiUser)
   }
 
   getLoggedUserInfo(){
@@ -62,6 +65,10 @@ export class ProfileComponent implements OnInit {
       console.log("response delete", response)
     });
     window.location.reload();
+  }
+
+  changePrivacyToggle($event: MatSlideToggleChange){
+    this.showPrivateCollections = $event.checked;
   }
 
 }

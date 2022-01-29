@@ -6,3 +6,9 @@
   color: rgb(194, 8, 116);
   text-shadow: darksalmon;
 }
+.toggle{
+  margin-left:2%;
+  color: rgb(173, 22, 136);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: oblique;
+}

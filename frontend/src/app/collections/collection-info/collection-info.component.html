@@ -1,5 +1,5 @@
 <div class="stil-colectii">
-<mat-card class="example-card stil" *ngFor="let colectie of colectii">
+<mat-card class="example-card stil" *ngFor="let colectie of colectii | privateOrPublicToggle: showPrivate">
   <mat-card-title style="color: brown;">{{colectie.titlu_Colectie}}</mat-card-title>
   <mat-card-subtitle>Descriere</mat-card-subtitle>
   <mat-card-content>

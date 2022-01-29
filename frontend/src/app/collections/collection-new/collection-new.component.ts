@@ -97,11 +97,10 @@ export class CollectionNewComponent implements OnInit {
   }
 
   createNewCollection(){
-    let permissions = localStorage.getItem('permissions')
-
     console.log(this.newCollectionForm)
     if(this.newCollectionForm.valid){
 
+      this.addDeafultExitPermissions();
       let collection : Colectie = {
         Titlu_Colectie: this.newCollectionForm.value.titlu,
         Descriere_Colectie: this.newCollectionForm.value.descriere,
