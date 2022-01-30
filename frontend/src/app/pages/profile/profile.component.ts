@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   loggedUser: any = null;
   colectiiUser: any[] = [];
   showPrivateCollections: boolean = false;
+  filterSweets: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -69,6 +70,10 @@ export class ProfileComponent implements OnInit {
 
   changePrivacyToggle($event: MatSlideToggleChange){
     this.showPrivateCollections = $event.checked;
+  }
+
+  filteringSweets($event: MatSlideToggleChange){
+    this.filterSweets = $event.checked
   }
 
 }

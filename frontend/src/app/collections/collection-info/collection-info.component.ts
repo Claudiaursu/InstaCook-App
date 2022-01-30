@@ -10,6 +10,7 @@ export class CollectionInfoComponent implements OnInit {
 
   @Input() colectii: any[] = [];
   @Input() showPrivate: boolean = false;
+  @Input() filterSweets: boolean = false;
   @Output() onDeleteColectie: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }

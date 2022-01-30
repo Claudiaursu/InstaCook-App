@@ -16,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { CollectionsModule } from './collections/collections.module';
-import { PrivateOrPublicTogglePipe } from './application-pipes/private-or-public-toggle-pipe/private-or-public-toggle.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ApplicationPipesModule } from './application-pipes/application-pipes.module';
 

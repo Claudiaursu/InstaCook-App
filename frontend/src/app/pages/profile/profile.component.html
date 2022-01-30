@@ -18,11 +18,17 @@
 
 <mat-slide-toggle class="example-margin toggle" style="align-self: flex-end;"
 (change)="changePrivacyToggle($event)"
->Vezi toate retetele
+>Vezi si colectiile publice
+</mat-slide-toggle>
+
+<mat-slide-toggle class="example-margin toggle" style="align-self: flex-end;"
+(change)="filteringSweets($event)"
+>Vezi doar colectiile pentru desert
 </mat-slide-toggle>
 
 <app-collection-info
   [colectii]="colectiiUser"
   [showPrivate]="showPrivateCollections"
+  [filterSweets] = "filterSweets"
   (onDeleteColectie)="deleteCollection($event)"
 ></app-collection-info>

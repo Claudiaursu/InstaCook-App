@@ -1,8 +1,8 @@
-import { PrivateOrPublicTogglePipe } from './private-or-public-toggle.pipe';
+import { FilterCollectionsTogglePipe } from './private-or-public-toggle.pipe';
 
-describe('PrivateOrPublicTogglePipe', () => {
+describe('filterCollectionsTogglePipe', () => {
   it('create an instance', () => {
-    const pipe = new PrivateOrPublicTogglePipe();
+    const pipe = new FilterCollectionsTogglePipe();
     expect(pipe).toBeTruthy();
   });
 });

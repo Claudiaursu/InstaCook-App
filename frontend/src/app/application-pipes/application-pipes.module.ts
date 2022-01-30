@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PrivateOrPublicTogglePipe } from './private-or-public-toggle-pipe/private-or-public-toggle.pipe';
+import { FilterCollectionsTogglePipe } from './private-or-public-toggle-pipe/private-or-public-toggle.pipe';
 
 
 @NgModule({
   declarations: [
-    PrivateOrPublicTogglePipe
+    FilterCollectionsTogglePipe
   ],
   imports: [
     CommonModule
   ],
   exports :[
-    PrivateOrPublicTogglePipe
+    FilterCollectionsTogglePipe
   ]
 })
 export class ApplicationPipesModule { }
