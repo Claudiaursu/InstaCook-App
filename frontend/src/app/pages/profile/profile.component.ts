@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { Colectie } from 'src/app/interfaces/colectie';
-import { InstaCookService } from 'src/app/services/instacook.service';
+import { CollectionService } from 'src/app/services/collection.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private instaCookService: InstaCookService
+    private collectionService: CollectionService,
+    private userService: UserService
     ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class ProfileComponent implements OnInit {
       }
       console.log("id user logat ", this.loggedUser.id)
       console.log("params id ", params['id'])
-      const infoUser = this.instaCookService.getUserInfoById(this.loggedUser.id).subscribe((response: any) =>{
+      const infoUser = this.userService.getUserInfoById(this.loggedUser.id).subscribe((response: any) =>{
         console.log("response: ", response)
         this.loggedUser = {
           ...this.loggedUser,
@@ -54,15 +56,15 @@ export class ProfileComponent implements OnInit {
   }
 
   getColectiiForUser(){
-   this.instaCookService.getAllColectii(this.loggedUser.id).subscribe(response =>{
+   this.collectionService.getAllColectii(this.loggedUser.id).subscribe(response =>{
     this.colectiiUser = response;
-    console.log("&&&&&&&",this.colectiiUser)
-   })
+    console.log("received collections: ", this.colectiiUser)
+    })
   }
 
   deleteCollection(titlu: string){
     console.log("a intrat in fct de delete profile")
-    this.instaCookService.deleteColectie(titlu).subscribe(response=>{
+    this.collectionService.deleteColectie(titlu).subscribe((response: any)=>{
       console.log("response delete", response)
     });
     window.location.reload();

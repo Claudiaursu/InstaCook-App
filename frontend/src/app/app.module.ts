@@ -18,6 +18,9 @@ import {MatCardModule} from '@angular/material/card';
 import { CollectionsModule } from './collections/collections.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ApplicationPipesModule } from './application-pipes/application-pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CollectiiResponseInterceptor } from './interceptors/colectii-response.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,18 @@ import { ApplicationPipesModule } from './application-pipes/application-pipes.mo
     MatMenuModule,
     MatCardModule,
     MatSlideToggleModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CollectiiResponseInterceptor,
       multi: true,
     }
   ],

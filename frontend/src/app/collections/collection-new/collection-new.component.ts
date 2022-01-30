@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { Colectie } from 'src/app/interfaces/colectie';
-import { InstaCookService } from 'src/app/services/instacook.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
 @Component({
   selector: 'app-collection-new',
@@ -17,7 +17,7 @@ export class CollectionNewComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private instaCookService: InstaCookService,
+    private collectionService: CollectionService,
     private router: Router
   ) { }
 
@@ -108,7 +108,7 @@ export class CollectionNewComponent implements OnInit {
         Cale_Poza: ''
       }
       console.log(collection)
-      this.instaCookService.createNewColection(this.loggedUser.id, collection).subscribe(response =>{
+      this.collectionService.createNewColection(this.loggedUser.id, collection).subscribe(response =>{
         console.log(response)
       })
     }

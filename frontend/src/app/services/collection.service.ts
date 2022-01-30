@@ -6,7 +6,7 @@ import { Colectie } from '../interfaces/colectie';
 @Injectable({
   providedIn: 'root'
 })
-export class InstaCookService {
+export class CollectionService {
   private baseUrl = environment.baseUrl;
   private headers = {
     headers: new HttpHeaders({
@@ -17,10 +17,6 @@ export class InstaCookService {
 
   constructor(private http: HttpClient) {
 
-   }
-
-   getUserInfoById(id: string){
-     return this.http.get(this.baseUrl + `/Utilizator/getById/${id}`, this.headers);
    }
 
    createNewColection(userId: string, newCollection: Colectie){
