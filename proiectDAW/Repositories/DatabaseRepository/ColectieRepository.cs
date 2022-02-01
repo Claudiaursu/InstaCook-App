@@ -2,9 +2,11 @@
 using proiectDAW.Models.One_To_Many;
 using proiectDAW.Repositories.GenericRepository;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace proiectDAW.Repositories.DatabaseRepository
 {
@@ -34,7 +36,9 @@ namespace proiectDAW.Repositories.DatabaseRepository
             //             where c.Titlu_Colectie.ToString() == titlu
             //             select c;
             //return colectie.FirstOrDefault();
-            return _table.FirstOrDefault(x => x.Titlu_Colectie.ToLower().Equals(titlu));
+            //var parsedTitle = titlu.Replace("%20", ' ');
+            string decodedString = WebUtility.UrlDecode(titlu);
+            return _table.FirstOrDefault(x => x.Titlu_Colectie.ToLower().Equals(decodedString));
         }
     }
 }

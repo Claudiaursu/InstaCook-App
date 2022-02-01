@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using proiectDAW.Models.Authentication;
 using proiectDAW.Models.Many_To_Many;
 using proiectDAW.Services;
+using proiectDAW.Utilities;
 
 namespace proiectDAW.Controllers
 {
@@ -36,7 +38,8 @@ namespace proiectDAW.Controllers
             return Ok(result);
         }
 
-
+        // autorizare cu rol admin necesara
+        [Authorization(Rol.Admin)]
         [HttpDelete("{id}")]
         public IActionResult DeleteReteta([FromRoute] string id)
         {
@@ -52,6 +55,8 @@ namespace proiectDAW.Controllers
             return Ok(retetaToDelete);
         }
 
+        // autorizare cu rol admin necesara
+        [Authorization(Rol.Admin)]
         [HttpPatch("{retetaId}")]
         public IActionResult Patch([FromRoute] string retetaId, [FromBody] JsonPatchDocument<Reteta> reteta)
         {
